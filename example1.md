@@ -40,10 +40,11 @@ HTML only version:
 Testing Show/Hide ides
 ----------------
 
-{% capture summary %}If you want to know the answer ...{% endcapture %}  
-{% capture details %}  
-there is no answer. Deep.   
-{% endcapture %}{% include details.html %} 
+{% capture details %}
+DETAILS
+{% endcapture %}
+{% capture summary %}SUMMARY{% endcapture %}{% include details.html %}
+
 
 
 Adding Indention
