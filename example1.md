@@ -40,6 +40,18 @@ Include this next line in your .md file for Google Drive videos, make sure to pu
 Example:     driveId: 0B7L_dMcaZknxVTRndmdSQ0F5OFE/preview
 -->
 
+{% include googleDrivePlayer.html id=page.driveId %}
+
+Embed Youtube
+----------
+<!---
+Include this next line in your .md for Youtube videos, make sure to put your video ID up there!
+
+Example:     youtubeId: lDi9uFcD7XI
+-->
+
+{% include youtubePlayer.html id=page.youtubeId %}
+
 
 Adding Indention
 ----------------
