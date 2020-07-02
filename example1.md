@@ -41,9 +41,9 @@ Testing Show/Hide ides
 ----------------
 
 {% capture details %}
-DETAILS
+Here is a long-winded explanation for you.
 {% endcapture %}
-{% capture summary %}SUMMARY{% endcapture %}{% include details.html %}
+{% capture summary %}I am confused.{% endcapture %}{% include details.html %}
 
 
 
