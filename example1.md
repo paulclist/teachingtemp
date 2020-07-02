@@ -37,6 +37,15 @@ HTML only version:
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/bCPEidaVzQU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
+Testing Show/Hide ides
+----------------
+
+{% capture summary %}If you want to know the answer ...{% endcapture %}  
+{% capture details %}  
+there is no answer. Deep.   
+{% endcapture %}{% include details.html %} 
+
+
 Adding Indention
 ----------------
 
