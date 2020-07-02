@@ -38,7 +38,16 @@ Trying to add video, using code from [nathancy](https://github.com/nathancy/jeky
 
 {% include googleDrivePlayer.html id=page.0B7L_dMcaZknxVTRndmdSQ0F5OFE/preview %}
 
-Or if that's not working:
+
+
+Example:     youtubeId: lDi9uFcD7XI
+-->
+
+Here me now. 
+
+{% include youtubePlayer.html id=lDi9uFcD7XI %}
+
+
 
 # Embed Youtube
 
