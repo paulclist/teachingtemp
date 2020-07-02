@@ -36,6 +36,7 @@ Adding Video
 Trying to add video, using code from [nathancy](https://github.com/nathancy/jekyll-embed-video)
 {% include youtubePlayer.html id=page.bCPEidaVzQU %}
 
+{% include googleDrivePlayer.html id=page.0B7L_dMcaZknxVTRndmdSQ0F5OFE/preview %}
 
 
 Adding Indention
