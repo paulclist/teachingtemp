@@ -33,6 +33,13 @@ can show hyperlinks.
 
 Adding Indention
 ----------------
+Trying to add video, using code from [nathancy](https://github.com/nathancy/jekyll-embed-video)
+{% include youtubePlayer.html id=page.lDi9uFcD7XI %}
+
+
+
+Adding Indention
+----------------
 
 You can also indent your text as well as do nested indention. 
 Use the ">" sign at the beginning of the line to indent it.
