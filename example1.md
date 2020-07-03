@@ -39,7 +39,14 @@ HTML only version:
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/bCPEidaVzQU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-Testing Show/Hide ides
+
+Embedding a gdrive video:
+----------------
+
+<iframe src="https://drive.google.com/file/d/1pz9Gncxc_f3-zcTQ_LfywhD1bXRAD5S1/preview" width="640" height="480"></iframe>
+
+
+Testing Show/Hide ideas
 ----------------
 
 {% capture details %}
