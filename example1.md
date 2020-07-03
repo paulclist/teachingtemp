@@ -46,6 +46,13 @@ Embedding a gdrive video:
 <iframe src="https://drive.google.com/file/d/1pz9Gncxc_f3-zcTQ_LfywhD1bXRAD5S1/preview" width="640" height="480"></iframe>
 
 
+Embedding a tweet:
+----------------
+
+The above comes from this:
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Bilinguals in the Lab: (Why) Does<br>Randomising Language Affect Cooperation?<br><br>A paper *not* presented <a href="https://twitter.com/Oxford_CSAE?ref_src=twsrc%5Etfw">@Oxford_CSAE</a>,<br>but in my kitchen for <a href="https://twitter.com/hashtag/OxCSAE2020?src=hash&amp;ref_src=twsrc%5Etfw">#OxCSAE2020</a><br><br>Joint work with Josh Hill, my PhD student <a href="https://twitter.com/developmentuea?ref_src=twsrc%5Etfw">@developmentuea</a>, with thanks to <a href="https://twitter.com/CBESS_UEA?ref_src=twsrc%5Etfw">@CBESS_UEA</a> for funding [1/4] <a href="https://t.co/aYHpqM7O0M">pic.twitter.com/aYHpqM7O0M</a></p>&mdash; Paul Clist (@paulclist) <a href="https://twitter.com/paulclist/status/1240226806323712004?ref_src=twsrc%5Etfw">March 18, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
 Testing Show/Hide ideas
 ----------------
 
