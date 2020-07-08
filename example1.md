@@ -179,7 +179,7 @@ you have an image file in your current working directory named
 __graph.png__, we can easily include it in the document 
 using the following syntax:
 
-![Figure 1. This is a caption of graph.png](figure2.png)
+![Figure 1. This is a caption of graph.png](figure_2.png)
 
 Next, I will introduce you to other commands that can be used 
 to generate dynamic tables and include figures.
@@ -202,7 +202,7 @@ Adding a figure dynamically
 
 
 
-![Figure 1. say something about this figure](Weaver-figure/figure_1.png)
+![Figure 1. say something about this figure](figure_1.png)
 
 
 
