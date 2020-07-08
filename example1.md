@@ -179,7 +179,7 @@ you have an image file in your current working directory named
 __graph.png__, we can easily include it in the document 
 using the following syntax:
 
-![Figure 1. This is a caption of graph.png](graph.png)
+![Figure 1. This is a caption of graph.png](figure2.png)
 
 Next, I will introduce you to other commands that can be used 
 to generate dynamic tables and include figures.
