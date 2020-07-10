@@ -1,3 +1,5 @@
+{% include custom-head.html %}
+
 ANOVA I: One way analysis of variance
 ---
 
