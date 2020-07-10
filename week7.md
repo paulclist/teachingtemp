@@ -1,4 +1,3 @@
-
 ANOVA I: One way analysis of variance
 ---
 
