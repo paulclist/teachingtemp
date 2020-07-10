@@ -1,7 +1,11 @@
+          <head>
+            {% include mathjax.html %}
+          </head>
+
+
 ANOVA I: One way analysis of variance
 ---
 
-{% include lib/mathjax.html %}
 
 Today we'll cover the statistical method One way ANOVA (ANanlysis Of
 VAriance), which looks at differences in the mean (average) between
