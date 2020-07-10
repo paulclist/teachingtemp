@@ -14,27 +14,31 @@ You've already seen the T test being used for differences between
 groups, so if the only difference is that there may be multiple groups, 
 why not just perform multiple T tests? Well, if there are three categories, 
 that means three tests. While the Type 1 error (false positive) rate is 5%, 
-when we do three tests it becomes $$1-0.95^{3}=0.14$$ i.e. 14%. In other words, 
-multiple T tests means we
+when we do three tests it becomes
+$1-0.95^{3}=0.14$ i.e. 14%. In other words, multiple T tests means we
 become more likely to see a significant difference even when there isn't one. 
 (This links to the *back to basics* lecture you'll see in week 11.)
-
-
-test - $$1-0.95^{3}=0.14$$
-
-//1-0.95^{3}=0.14//
 
 NB: while we talk about T tests and ANOVA as though they are separate (they are!),
  there is some overlap. Specifically, if it is a one way
 anova with only two groups, ANOVA becomes the same as a T test.
-We can see that easily. Let's load some data 
+We can see that easily. Let's load some data. 
+
+We can do that by using this code:
+~~~
+webuse systolic
+oneway  systolic drug if drug>2 
+ttest  systolic if drug>2, by(drug) 
+~~~ 
+
+When you run that you should see something like: 
 
 
 
           . webuse systolic
           (Systolic Blood Pressure Data)
 
-          . oneway  systolic drug if drug>2 // This runs an anova with 2 groups 
+          . oneway  systolic drug if drug>2 
 
                                   Analysis of Variance
               Source              SS         df      MS            F     Prob > F
@@ -46,7 +50,7 @@ We can see that easily. Let's load some data
 
           Bartlett's test for equal variances:  chi2(1) =   0.0636  Prob>chi2 = 0.801
 
-          . ttest  systolic if drug>2, by(drug) // This runs an anova with 2 groups
+          . ttest  systolic if drug>2, by(drug) 
 
           Two-sample t test with equal variances
           ------------------------------------------------------------------------------
@@ -66,6 +70,12 @@ We can see that easily. Let's load some data
            Pr(T < t) = 0.1038         Pr(|T| > |t|) = 0.2076          Pr(T > t) = 0.8962
 
 
+
+The first line loads data. 
+The second runs an anova with 2 groups. Note "p=0.2076" in top right
+The third line runs an anova with 2 groups Note the line  "Pr(|T| > |t|) = 0.2076"
+
+- - -
 
 
 Hypotheses and Strategy
@@ -94,6 +104,9 @@ this, notice that the equation (below) is just one divided by the other,
 with a high number showing between group variation is more important and a 
 low number showing within group variation is more important.
 
+- - -
+
+
 Questions: thinking through the logic
 =====================================
 
@@ -105,56 +118,80 @@ this. Would you expect a large or small F if:
 1.  \... the groups are the degree classification (first, 2:1 etc), and
     the individual observations are the final degree average?
 
+            {% capture details %}
+I would expect a large F: the classification tells us a lot about degree average.  
+
+{% endcapture %}
+{% capture summary %} Answer 
+{% endcapture %}{% include details.html %}
+
 2.  \... the groups are the gender, and the observations are
     individual's height?
+{% capture details %}
+I would expect a medium-large F. Women are, on average, shorter than men. That doesn't mean all women are short than all men - of course not! But knowing someone's gender would help us predict their height in a significant way. 
+
+
+{% endcapture %}
+{% capture summary %} Answer 
+{% endcapture %}{% include details.html %}
 
 3.  \... the groups are the continents/regions, and the observations are country income?
 
+{% capture details %}
+I'd expect a large F. The countries in Western Europe tend to be richer than those in Latin America, and then Sub-Saharan Africa. As above there is overlap, but knowing the group would help us predict.  
+
+
+{% endcapture %}
+{% capture summary %} Answer 
+{% endcapture %}{% include details.html %}
+
 4.  \... the groups are hair colour, and the observations are \# of gym
     visits per student per year?
-    
+ 
 
 {% capture details %}
-For 1. I would expect a large F: the classification tells us a lot about degree average.  
-For 2. I would expect a medium-large F. Women are, on average, shorter than men. That doesn't mean all women are short than all men - of course not! But knowing someone's gender would help us predict their height in a significant way. 
-For 3. I'd expect a large F. The countries in Western Europe tend to be richer than those in Latin America, and then Sub-Saharan Africa. As above there is overlap, but knowing the group would help us predict.  
-For 4. We'd expect a small F. Knowing the group wouldn't help us predict gym visits.    
+We'd expect a small F. Knowing the group wouldn't help us predict gym visits.    
+
 {% endcapture %}
-{% capture summary %} I've thought about these
+{% capture summary %} Answer 
 {% endcapture %}{% include details.html %}
+
+- - -
 
 
 How to calculate the ANOVA statistic
 ====================================
 
+So, formally, that would be:
+
 $$F=\dfrac{Between}{Within}=\dfrac{MS_{between}}{MS_{within}}=\dfrac{SS_{between}/df_{between}}{SS_{within}/df_{within}}$$
 
 Where:
 
--   MS=Mean Square (either between groups or within groups)
+MS=Mean Square (either between groups or within groups)
 
--   SS=Sum of squares
+SS=Sum of squares
 
--   $_i$ denotes groups and $_j$ individuals in groups
+$_i$ denotes groups and $_j$ individuals in groups
 
--   $SS_{between}=\sum_i N_i (\bar{x}_i-\bar{x})^2$ note each is
+$SS_{between}=\sum_i N_i (\bar{x}_i-\bar{x})^2$ note each is
     multiplied by the number of observations in that group, denoted by
     $N_i$
 
--   $SS_{within}=\sum(x_{ij}-\bar{x}_i)^2$
+$SS_{within}=\sum(x_{ij}-\bar{x}_i)^2$
 
--   Note that there is a huge difference between what $SS_{between}$ and
+Note that there is a huge difference between what $SS_{between}$ and
     $SS_{within}$ are measuring, which is only made clear by one little
     subscript $j$.
 
--   $df$ stands for degrees of freedom.
+$df$ stands for degrees of freedom.
 
-    -   $df_{between}=i-1$ i.e. the number of groups - 1
+$df_{between}=i-1$ i.e. the number of groups - 1
 
-    -   $df_{within}=N-k$ i.e. the number of observations minus the
+$df_{within}=N-k$ i.e. the number of observations minus the
             number of groups
 
-    -   $df_{total}=N-1$ i.e. the number of observations minus 1
+$df_{total}=N-1$ i.e. the number of observations minus 1
 
 The resulting statistic follows an F distribution, and you can compare
 the value you get to the critical values tables to see the level of
@@ -174,7 +211,7 @@ We're going to use a simple example, and give it a dev-y stroy.
 We can use a dataset from stata using the *webuse* command in Stata. 
 You can run these your self and follow along. **In fact, you should as you'll need to use stata yourself. **
 
-The first command loads the data, the second and third rename variables, and the fourth lists the variables. I then drop a variable I don't use, and label the variables. 
+The first command loads the data, the second and third rename variables. I then drop a variable I don't use, and label the variables. 
 
 
 
@@ -189,98 +226,36 @@ The first command loads the data, the second and third rename variables, and the
           . rename systolic change
 
 
-          . list intervention change
-
-               +-------------------+
-               | interv~n   change |
-               |-------------------|
-            1. |        1       42 |
-            2. |        1       44 |
-            3. |        1       36 |
-            4. |        1       13 |
-            5. |        1       19 |
-               |-------------------|
-            6. |        1       22 |
-            7. |        1       33 |
-            8. |        1       26 |
-            9. |        1       33 |
-           10. |        1       21 |
-               |-------------------|
-           11. |        1       31 |
-           12. |        1       -3 |
-           13. |        1       25 |
-           14. |        1       25 |
-           15. |        1       24 |
-               |-------------------|
-           16. |        2       28 |
-           17. |        2       23 |
-           18. |        2       34 |
-           19. |        2       42 |
-           20. |        2       13 |
-               |-------------------|
-           21. |        2       34 |
-           22. |        2       33 |
-           23. |        2       31 |
-           24. |        2       36 |
-           25. |        2        3 |
-               |-------------------|
-           26. |        2       26 |
-           27. |        2       28 |
-           28. |        2       32 |
-           29. |        2        4 |
-           30. |        2       16 |
-               |-------------------|
-           31. |        3        1 |
-           32. |        3       29 |
-           33. |        3       19 |
-           34. |        3       11 |
-           35. |        3        9 |
-               |-------------------|
-           36. |        3        7 |
-           37. |        3        1 |
-           38. |        3       -6 |
-           39. |        3       21 |
-           40. |        3        1 |
-               |-------------------|
-           41. |        3        9 |
-           42. |        3        3 |
-           43. |        4       24 |
-           44. |        4        9 |
-           45. |        4       22 |
-               |-------------------|
-           46. |        4       -2 |
-           47. |        4       15 |
-           48. |        4       27 |
-           49. |        4       12 |
-           50. |        4       12 |
-               |-------------------|
-           51. |        4       -5 |
-           52. |        4       16 |
-           53. |        4       15 |
-           54. |        4       22 |
-           55. |        4        7 |
-               |-------------------|
-           56. |        4       25 |
-           57. |        4        5 |
-           58. |        4       12 |
-               +-------------------+
-
           . drop dis
 
           . label variable  change "Test Score Change over 1 year"
 
           . label variable intervention "NGOs Intervention"
 
+          . label define temp 1 "Control" 2 "Laptops" 3 "Books" 4 "Both"
+
+          . label variable intervention temp
+
 
 
 An RCT is done on different teaching methods in classrooms in Latin
 America, where children either get no difference (Control), laptops, new books or both. The variable of interest is the change in a child's test score. I'll give you some summary stats, and we'll fill in the ANOVA table together.
 
+Why not have a look at the data, just run:
 
 
-          . label define temp 1 "Control" 2 "Laptops" 3 "Books" 4 "Both"
 
-          . label variable intervention temp
+1\. Just from looking at the raw data, can you see any differences? 
+(you can see the raw data using the list command, or using the data browser in Stata. )
+
+~~~ 
+list intervention change
+~~~ 
+
+2\. Now, with means and standard deviations:
+
+
+
 
           . tab intervention, su(change)
 
@@ -297,20 +272,9 @@ America, where children either get no difference (Control), laptops, new books o
 
 
 
-1\. Just from looking at the raw data, can you see any differences? 
-(you can see the raw data using the list command, or using the data browser in Stata. )
-
-2\. Now, with means and standard deviations:
-
-          Mean           SD     Obs 
-  --- --------- ------- ------- ----
-  1   Control     26.07   11.68   15
-  2   Laptops     25.53   11.62   15
-  3   Books        8.75   10.02   12
-  4   Both         13.5    9.32   16
-          18.88        12.8      58 
-
               can you see any differences?
+
+(Note when I print Stata output, you can see the Stata command with a . infront. That means you can follow along with all commands, you just need to remove the .)        
               
 3\. Now, with a box plot. This shows you the median (middle of the box), the 25th and 75th percentile (ends of the box), the penultimate high/low value (the 'whiskers' and (in one case) the lowest value.
 
@@ -320,7 +284,7 @@ America, where children either get no difference (Control), laptops, new books o
 
 
 
-![Figure 1. Change in test scores, by Intervention](Weaver-figure/figure_5.png)
+![Figure 1. Change in test scores, by Intervention](Weaver-figure/figure_2.png)
 
 
 
@@ -345,13 +309,11 @@ is a useful tool which does not rely on your judgement. It is repeatable/replica
 
 Let's look at a partial ANOVA table.
 
-  Source        Partial SS   df      MS   F   Prob\>F
-  ----------- ------------ ---- ------- --- ---------
-  Treatment         3133.2    3                0.0001
-                                                
-  Residual          6206.9        114.9     
-                                                
-  Total             9340.2        163.9     
+  "Source"|"Partial SS"|"df"|"MS"|"F"|"Prob\>F"
+  :--------|:--------:|:--------:|:--------|:--------:|:--------:   
+  Treatment|         3133.2 |   3|         |       0.0001
+  Residual |         6206.9 |    |   114.9 |    
+  Total    |         9340.2 |    |   163.9 |    
                                                                      
 
 5\. I've left out $df_{within}$ (which should go in the residual row)
