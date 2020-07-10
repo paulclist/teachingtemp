@@ -18,8 +18,8 @@ You've already seen the T test being used for differences between
 groups, so if the only difference is that there may be multiple groups, 
 why not just perform multiple T tests? Well, if there are three categories, 
 that means three tests. While the Type 1 error (false positive) rate is 5%, 
-when we do three tests it becomes
-$$1-0.95^{3}=0.14$$ i.e. 14%. In other words, multiple T tests means we
+when we do three tests it becomes $$1-0.95^{3}=0.14$$ i.e. 14%. In other words, 
+multiple T tests means we
 become more likely to see a significant difference even when there isn't one. 
 (This links to the *back to basics* lecture you'll see in week 11.)
 
