@@ -17,6 +17,11 @@ multiple T tests means we
 become more likely to see a significant difference even when there isn't one. 
 (This links to the *back to basics* lecture you'll see in week 11.)
 
+
+test - $$1-0.95^{3}=0.14$$
+
+//1-0.95^{3}=0.14//
+
 NB: while we talk about T tests and ANOVA as though they are separate (they are!),
  there is some overlap. Specifically, if it is a one way
 anova with only two groups, ANOVA becomes the same as a T test.
